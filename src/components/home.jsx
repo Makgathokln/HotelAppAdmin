@@ -52,6 +52,10 @@ return (
             <li> <Link to="/admin" class={`nav-link ${path==='/admin'?'active':'text-white'}`}> 
             
             <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Amin</span></Link> </li>
+
+            <li> <Link to="/AddHotels" class={`nav-link ${path==='/AddHotels'?'active':'text-white'}`}> 
+            
+            <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Hotels</span></Link> </li>
         </ul>
         <hr/>
         <Link to="/" class="nav-link text-white"> LogOut</Link>

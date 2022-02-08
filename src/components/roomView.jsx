@@ -51,9 +51,29 @@ marginTop:10,  }} />
         </div>
 
         <div className='formAdmin'>
-        
-       
 
+       <table class="table table-bordered" style={{marginLeft:20, width:900, justifyContent:'center', alignContent:'center'}}>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+   
+  
+  </tbody>
+</table> 
+       
+{/* 
     <table class="table table-bordered" style={{marginLeft:20, width:900, justifyContent:'center', alignContent:'center'}}>
     <thead>
       <tr>
@@ -112,15 +132,13 @@ marginTop:10,  }} />
 <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10, color:'#fff', backgroundColor:'#99ff99'}}>View</button>
 <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10,color:'#fff', backgroundColor:'#ffe066'}}>Edit</button>
 <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10, color:'#fff',backgroundColor:'#ff6666'}}>Delete</button>
-{/* <button type="button" className="btn btn-light" style={{width:70, marginLeft:10}}>Edit</button>
-<button type="button" className="btn btn-light" style={{width:70, marginLeft:10}}>Delete</button> */}
 
 
         </td>
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> */}
 
 
 </div>

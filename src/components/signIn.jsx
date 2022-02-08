@@ -57,21 +57,22 @@ const SignIn = () => {
 
     <div className="fluid-container">
             <h3 style={{color:'#FF8038',textAlign:'center'}}>Sign In</h3>
+  <div className='col-md-8 mx-auto col-10 card shadow-lg border-0 p-4'>
   <div className="login-register">
   <div class="mb-3 col-xs-4">
   <label for="exampleFormControlInput1" class="form-label">Email Address</label>
   
-  <input type="email" class="form-control w-25"
+  <input type="email" class="form-control w-75"
    id="exampleFormControlInput1"
-  placeholder="Please Enter Your Email Address"
+  placeholder="Makgathokln@gmail.com"
   onChange={handleEmailChange} value={email}
   />
 </div>
 <div class="mb-3 col-xs-4">
   <label for="exampleFormControlTextarea1" class="form-label">Password</label>
   <input type="password"
-   class="form-control w-25" id="exampleFormControlInput1"
-    placeholder="Please Enter Your Password"
+   class="form-control w-75" id="exampleFormControlInput1"
+    placeholder="********"
     onChange={handlePasswordChange}
       value={password}
     />
@@ -86,6 +87,8 @@ const SignIn = () => {
   <button type="button"  class="btn btn-light  w-25">Sign Up</button>
 
   </div>
+  </div>
+ 
 </div>
 
 </div>
