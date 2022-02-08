@@ -22,7 +22,7 @@ const SignIn = () => {
   useEffect(() =>{
     auth.onAuthStateChanged((user) =>{
       if(user){
-        navigate('/signIn')
+        navigate('/landing')
       }
     })
   })

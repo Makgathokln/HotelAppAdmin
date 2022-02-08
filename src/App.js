@@ -7,16 +7,16 @@ import Landing from "./components/landing";
 import Hotel from "./components/hotel";
 import AddRooms from "./components/AddRooms";
 import AddHotels from  "./components/AddHotels";
-import Bookings from "./bookings";
-import Admin from './admin';
-import Guests from './guests';
-import Notifications from './notifications';
-import Rooms from './rooms';
-import About from "./about";
-import AdminView from "./adminView";
-import RoomView from "./roomView";
-import Signup from "./Signup";
-
+import Bookings from "./components/bookings";
+import Admin from './components/admin';
+import Guests from './components/guests';
+import Notifications from './components/notifications';
+import Rooms from './components/rooms';
+import About from "./components/about";
+import AdminView from "./components/adminView";
+import RoomView from "./components/roomView";
+import Signup from "./components/Signup";
+import Home from "./components/home";
 function App() {
   return (
     <div className="app">
@@ -31,7 +31,6 @@ function App() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/AddRooms" element={<AddRooms />} />
           <Route path="/AddHotels" element={<AddHotels />} />
-          <Route path="/" element={<SignIn />} />
             <Route path="/about" element={<About />} />
             <Route path="/bookings" element={<Bookings />} />
 
@@ -41,6 +40,7 @@ function App() {
         <Route path="/rooms" element={<Rooms/>} /> 
         <Route path="/adminView" element={<AdminView/>} /> 
         <Route path="/roomView" element={<RoomView/>} /> 
+        <Route path="/Signup" element={<Signup/>}/>
         </Routes>
         </div>
 
