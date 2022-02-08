@@ -48,6 +48,16 @@ const menu = () => {
         <Route path="/rooms" element={<Rooms/>} /> 
         <Route path="/adminView" element={<AdminView/>} /> 
         <Route path="/roomView" element={<RoomView/>} /> 
+        <Route exact path="/about" component={About} />
+            <Route exact path="/bookings" component={Bookings} />
+
+        <Route exact path="/guests" component={Guests} />
+        <Route exact path="/admin" component={Admin}/>
+        <Route exact path="/notifications" component={Notifications} /> 
+        <Route exact path="/rooms" component={Rooms}/> 
+        <Route exact path="/adminView" component={AdminView} /> 
+        <Route exact path="/roomView" component={RoomView} /> 
+        <Route exact path="/Signup" component={Signup} /> 
           </Routes>
         </div>
       </Router>
