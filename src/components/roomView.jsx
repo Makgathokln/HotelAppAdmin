@@ -1,13 +1,33 @@
-import React, {Component} from 'react';
-import Menu from './menu';
+import React, {Component, useState, useEffect} from 'react';
+import { onValue, ref, set } from "firebase/database";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import {db } from "../firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import profA from "../images/profA.jpeg";
 import guest from '../const/guests';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faEdit,faEye, faTrash, faBed, faUsers, faFolder,faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { BrowserRouter as Router, Routes, Link, Route ,useLocation,useParams} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Link, Route ,useNavigate,useParams} from "react-router-dom";
 
-const roomView = () => {
+const RoomView = () => {
+  const navigate = useNavigate();
+  
+  const [names, setNames] = useState([]);
+
+  // const AddRooms = () =>{
+    const [addRooms, setAddRooms] = useState([]);
+
+    React.useEffect(() =>{
+      onValue(ref(db, "/addRooms/"), (snapshot) =>{
+        setAddRooms([]);
+        const data = snapshot.val();
+        if(data !== null) {
+          Object.values(data).map((addRoom) => {
+            setAddRooms((oldArray) => [...oldArray,addRoom ]);
+          });
+        }
+      });
+    },[])
   
 return(
     <>
@@ -52,24 +72,38 @@ marginTop:10,  }} />
 
         <div className='formAdmin'>
 
-       <table class="table table-bordered" style={{marginLeft:20, width:900, justifyContent:'center', alignContent:'center'}}>
+
+  <table class="table table-bordered" style={{marginLeft:20, justifyContent:'center', alignContent:'center'}}>
+ 
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <td>#</td>
+      <td class="col-sm-3">Room Type</td>
+      <td class="col-sm-3">Room Number</td>
+      <td class="col-sm-3">Price</td>
+      <td class="col-sm-6">Action</td>
+
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-   
   
+
+   {addRooms.map((addRoom) => ( 
+    <tr key={addRoom.id}>
+      <th scope="row">{addRoom.id}</th>
+      <th>{addRooms.type}</th>
+      <th>{addRooms.roomNo}</th>
+      <th>{addRooms.price}</th>
+      <td>
+      <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10, color:'#fff', backgroundColor:'#99ff99'}}>View</button>
+<button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10,color:'#fff', backgroundColor:'#ffe066'}}>Edit</button>
+<button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10, color:'#fff',backgroundColor:'#ff6666'}}>Delete</button>
+     
+             </td>
+    </tr>
+    
+    ))}
   </tbody>
 </table> 
        
@@ -146,4 +180,4 @@ marginTop:10,  }} />
         </>
     )
 }
-export default roomView
+export default RoomView

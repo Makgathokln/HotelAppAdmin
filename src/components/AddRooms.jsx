@@ -1,6 +1,7 @@
-import { ref, set } from "firebase/database";
-import React, { useState } from "react";
-import { db } from "../firebase";
+import { onValue, ref, set } from "firebase/database";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { auth, db } from "../firebase";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +9,25 @@ const AddRooms = () => {
   const navigate = useNavigate();
   const uid = v4();
 
+useEffect(() =>{
+  auth.onAuthStateChanged((user) => {
+    if(user){
+      onValue(ref(db, `/${auth.currentUser.uid}`), snapshot =>{
+        setNames([]);
+        const data = snapshot.val();
+        if(data !== null){
+          Object.values(data).map(todo => {
+            setNames((oldArray) => [...oldArray, names]);
+          });
+        }
+      });
+    } else if (!user) {
+      navigate("/");
+    }
+  });
+},[]);
+
+  const [names, setNames] = useState([]);
   const [name, setName] = useState("");
   const [type, settype] = useState("");
   const [price, setprice] = useState(0);

@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import { v4 } from "uuid";
 import { useNavigate, Link } from "react-router-dom";
 import profA from "../images/profA.jpeg";
+import './hotels.css';
 
 const AddHotels = () => {
   const navigate = useNavigate();
@@ -87,10 +88,11 @@ const AddHotels = () => {
     }
   };
 
+  
   return (
     <div className="container my-5">
       
-      <div className='gueHeader' >
+      <div className='hotels' >
 
       {/* <input className="form-control" 
         style={{width:600, height:40, 
@@ -98,8 +100,8 @@ const AddHotels = () => {
          type="search" placeholder='Search' aria-label='Search' disabled/> */}
          
         
-         <p className='nameP' style={{color:'#0B156F',paddingLeft:200, marginTop:20, fontWeight:'bold'}}>Hi, Bella</p>
-<img className='imageP' src={profA} alt="this is car image" 
+         <p className='hotels'>Hi, Bella</p>
+    <img className='hotels'  src={profA} alt="this is car image" 
 style={{ width:50,height:50, borderRadius:10,marginLeft:140, 
 marginTop:10,  }} />
       

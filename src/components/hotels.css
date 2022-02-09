@@ -1,0 +1,6 @@
+.hotels {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: flex-end;
+    color: '#0B156F',
+}

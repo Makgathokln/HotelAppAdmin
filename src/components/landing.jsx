@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import pin3 from "../images/pin3.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {signInWithEmailAndPassword} from "firebase/auth";
-
+import './landing.css';
 export default function Landing(){
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,22 +24,26 @@ export default function Landing(){
 
 </div>
 <div className='LandBody'>
-                <h1 style={{color:'#666666'}}>Reports</h1>
+                <h1 style={{color:'#666666', marginTop:20}}>Reports</h1>
 
 <div className='LandInside'>
 
     <div className='LandInsideA'>
 <div className='squareA'>
-    <h3>No. of Guests</h3>
+    <p className='guests'>Cancelled Rooms</p>
+    <p className='number'> 2</p>
 </div>
 
 <div className='squareB'>
-<h3>Rooms booked</h3>
+<p className='guests'>Rooms Booked</p>
+<p className='number'> 2</p>
 
 </div>
 
 <div className='squareC'>
-    <h4>Checked-In</h4>
+    <p className='guests'>Availabe Rooms</p>
+    <p className='number'> 2</p>
+
 </div>
     </div>
 
@@ -50,17 +54,22 @@ export default function Landing(){
  
     <div className='LandInsideAA'>
 <div className='squareA'>
-    <h3>No. of Guests</h3>
+    <p className='guests'>Total Rooms</p>
+    <p className='number'> 2</p>
+
 </div>
 
 
 <div className='squareB'>
-<h3>Rooms booked</h3>
+<p className='guests'>Checked-In</p>
+<p className='number'> 2</p>
 
 </div>
 
 <div className='squareC'>
-    <h4>Checked-In</h4>
+    <p className='guests'>Checked-Out</p>
+    <p className='number'> 2</p>
+
 </div>
     </div>
             </div>

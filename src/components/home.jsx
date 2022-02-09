@@ -34,7 +34,7 @@ return (
             <FontAwesomeIcon icon={faHome} /><span class="ms-2">Home</span> </Link> </li>
             
             
-             <li> <Link to="/Signup" class={`nav-link ${path==='/Signup'?'active':'text-white'}`}>
+             <li> <Link to="/bookings" class={`nav-link ${path==='/bookings'?'active':'text-white'}`}>
              <FontAwesomeIcon icon={faFolder} /><span class="ms-2">Bookings</span> </Link> </li>
            
            
