@@ -38,10 +38,10 @@ const Rooms = () => {
         sys: {
           id: uid,
         },
-        fields: {
-          type,    
-                slug: uid.toString(),
-          
+        // fields: {
+        //   type,    
+        //         slug: uid.toString(),
+          type,
           price,
           NoOfBeds,
           roomNo,
@@ -75,7 +75,7 @@ const Rooms = () => {
               },
             },
           ],
-        },
+        // },
       }).then(() => {
         alert("Room Added!");
         // setName("");

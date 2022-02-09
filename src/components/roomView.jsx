@@ -92,9 +92,9 @@ marginTop:10,  }} />
    {addRooms.map((addRoom) => ( 
     <tr key={addRoom.id}>
       <th scope="row">{addRoom.id}</th>
-      <th>{addRooms.type}</th>
-      <th>{addRooms.roomNo}</th>
-      <th>{addRooms.price}</th>
+      <th>{addRoom.type}</th>
+      <th>{addRoom.roomNo}</th>
+      <th>{addRoom.price}</th>
       <td>
       <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10, color:'#fff', backgroundColor:'#99ff99'}}>View</button>
 <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10,color:'#fff', backgroundColor:'#ffe066'}}>Edit</button>
