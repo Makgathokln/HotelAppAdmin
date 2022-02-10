@@ -32,7 +32,10 @@ marginTop:10,  }} />
             <h3>Add New Guest</h3></div>
            
             <hr style={{  color:'#444',border: '1px solid #444', marginLeft:10, marginBottom:40}}/>
-{
+
+
+            
+{/* {
     guest.map((item)=>
     
             <div className="box-container">
@@ -62,7 +65,7 @@ marginTop:10,  }} />
            
             </div>
                 )
-            }
+            } */}
         </div>
 
         </div>
