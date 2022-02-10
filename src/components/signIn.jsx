@@ -47,32 +47,18 @@ const SignIn = ({setUser}) => {
 
   return (
     <>
-      <div>
-        <nav className="navigation">
-          <div className="ImageHeader">
-            <img
-              src={pin3}
-              alt="this is car image"
-              style={{ marginLeft: 80, height: "39%", marginTop: 27 }}
-            />
-            <h1
-              style={{
-                color: "#fff",
-                alignContent: "center",
-                marginLeft: 240,
-                marginTop: 90,
-              }}
-            >
-              {" "}
-              Hotel Admin System{" "}
-            </h1>
-          </div>
-        </nav>
+      <div className="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light ">
+      <img src={pin3} alt="this is car image" style={{marginLeft:80, height:'75%', }} />
+    <h1 style={{color:'#fff',alignContent:'center', marginLeft:320,}}>  Hotel Admin System </h1>   
+       
+  </nav>
+     
+       
+          <div className="col-md-4 mx-auto col-4 card shadow-lg border-0 p-4 mt-5">
+          
+            <h3 style={{ color: "#FF8038", textAlign: "center" }}>Sign In</h3>
 
-        <div className="fluid-container">
-          <h3 style={{ color: "#FF8038", textAlign: "center" }}>Sign In</h3>
-          <div className="col-md-8 mx-auto col-10 card shadow-lg border-0 p-4">
-            <div className="login-register">
               <div class="mb-3 col-xs-4">
                 <label for="exampleFormControlInput1" class="form-label">
                   Email Address
@@ -80,7 +66,7 @@ const SignIn = ({setUser}) => {
 
                 <input
                   type="email"
-                  class="form-control w-75"
+                  class=" form-control w-75"
                   id="exampleFormControlInput1"
                   placeholder="Makgathokln@gmail.com"
                   onChange={handleEmailChange}
@@ -102,12 +88,12 @@ const SignIn = ({setUser}) => {
               </div>
 
               <div class="mb-3 col-xs-4">
-                <a href="#" class="link-secondary">
+                <a href="#" class="link-secondary" style={{marginLeft:40}}>
                   Forgot Your Password?
                 </a>
               </div>
 
-              <div class="row">
+              <div class="row" style={{marginLeft:40}}>
                 <button
                   type="button"
                   onClick={handleSignIn}
@@ -115,14 +101,14 @@ const SignIn = ({setUser}) => {
                 >
                   Sign In
                 </button>
+                
                 <button type="button" class="btn btn-light  w-25">
                   Sign Up
                 </button>
               </div>
-            </div>
           </div>
         </div>
-      </div>
+     
     </>
   );
 };

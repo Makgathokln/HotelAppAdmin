@@ -43,8 +43,8 @@ const booking = [
         name:'Thapelo Chaba',
 
         type:'Executive Suite',
-        checkIn:'Check-In: 23-04-2022',
-        checkOut:'Check-Out: 24-04-2022',
+        checkIn:'23-04-2022',
+        checkOut:'24-04-2022',
         price:'R6500',
         roomNo:'Room 11',
 

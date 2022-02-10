@@ -8,6 +8,20 @@
     height: 90px;
 }
 
+.d-flex {
+    background-color: #0B156F;
+}
+
+.navbar {
+    background-color: #0B156F;
+    color: #0B156F;
+    height: 150px;
+}
+
+.login {
+    margin-top: 70px;
+}
+
 .ImageHeader {
     flex-direction: row;
     align-content: space-around;
@@ -74,27 +88,6 @@ borderWidth: 3; */
 .mid {
 padding-bottom: 40;
 } */
-
-.headed {
-    background-color: aqua;
-}
-
-.mid {
-    background-color: blue;
-    height: '10%';
-}
-
-.foot {
-    background-color: violet;
-}
-
-.d-flex {
-    background-color: #0B156F;
-}
-
-.test {
-    background-color: yellow;
-}
 
 .LandHeader {
     width: auto;

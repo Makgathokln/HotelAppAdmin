@@ -100,10 +100,10 @@ const AddHotels = () => {
          type="search" placeholder='Search' aria-label='Search' disabled/> */}
          
         
-         <p className='hotels'>Hi, Bella</p>
+         {/* <p className='hotels'>Hi, Bella</p>
     <img className='hotels'  src={profA} alt="this is car image" 
 style={{ width:50,height:50, borderRadius:10,marginLeft:140, 
-marginTop:10,  }} />
+marginTop:10,  }} /> */}
       
       </div>
 

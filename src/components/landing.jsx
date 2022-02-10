@@ -12,7 +12,7 @@ export default function Landing(){
   
         return(
             <>
-            <div className='container'>
+            <div className='container-fluid'>
 <div className='LandHeader'>
 
     

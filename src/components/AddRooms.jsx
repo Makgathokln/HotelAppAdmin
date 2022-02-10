@@ -9,23 +9,23 @@ const AddRooms = () => {
   const navigate = useNavigate();
   const uid = v4();
 
-useEffect(() =>{
-  auth.onAuthStateChanged((user) => {
-    if(user){
-      onValue(ref(db, `/${auth.currentUser.uid}`), snapshot =>{
-        setNames([]);
-        const data = snapshot.val();
-        if(data !== null){
-          Object.values(data).map(todo => {
-            setNames((oldArray) => [...oldArray, names]);
-          });
-        }
-      });
-    } else if (!user) {
-      navigate("/");
-    }
-  });
-},[]);
+// useEffect(() =>{
+//   auth.onAuthStateChanged((user) => {
+//     if(user){
+//       onValue(ref(db, `/${auth.currentUser.uid}`), snapshot =>{
+//         setNames([]);
+//         const data = snapshot.val();
+//         if(data !== null){
+//           Object.values(data).map(todo => {
+//             setNames((oldArray) => [...oldArray, names]);
+//           });
+//         }
+//       });
+//     } else if (!user) {
+//       navigate("/");
+//     }
+//   });
+// },[]);
 
   const [names, setNames] = useState([]);
   const [name, setName] = useState("");

@@ -23,9 +23,10 @@ return (
     
     <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white " 
     style={{width: 250}}> 
+        
         <img src={pin3} alt="this is car image" style={{ height:'25%'}} />
     
-<h3 style={{marginTop:20}}>Hotel Admin</h3>    
+    <h3 style={{marginTop:20}}>Hotel Admin</h3>    
 
     <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item"> 
@@ -53,7 +54,7 @@ return (
             
             <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Admin</span></Link> </li>
 
-            <li> <Link to="/AddHotels" class={`nav-link ${path==='/AddHotels'?'active':'text-white'}`}> 
+            <li> <Link to="/AddRooms" class={`nav-link ${path==='/AddRooms'?'active':'text-white'}`}> 
             
             <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Hotels</span></Link> </li>
         </ul>

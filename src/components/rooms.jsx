@@ -13,9 +13,7 @@ const Rooms = () => {
   const [price, setprice] = useState(0);
   const [NoOfBeds, setNoOfBeds] = useState(0);
   const [roomNo, setroomNo] = useState("");
-  const [pets, setpets] = useState(false);
-  const [breakfast, setbreakfast] = useState(false);
-  const [description, setdescription] = useState("");
+ 
   const [extras, setextras] = useState("");
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
