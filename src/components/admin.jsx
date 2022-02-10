@@ -1,76 +1,85 @@
-import React, {useState,} from 'react';
-import Menu from './menu';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ref, set } from "firebase/database";
+import React, { useState } from "react";
+import { db } from "../firebase";
+import { v4 } from "uuid";
+import { useNavigate, Link } from "react-router-dom";
 import profA from "../images/profA.jpeg";
-import guest from '../const/guests';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faHome,faBell, faUser, faBed, faUsers, faFolder,faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { BrowserRouter as
-   Router, Routes,
-   Link, Route ,
-   useHistory,useParams} from "react-router-dom";
-//import firebaseDb from '../firebase';
-// import firebase from '../firebase';
 
 const Admin = () => {
- 
-  // const values= {
-  //   firstName: "",
-  //   lastName: "",
-  //   emailAddress:"",
-  //   password:"",
-  //   contactNumber:"",
+  const navigate = useNavigate();
+  const uid = v4();
 
-  // };
+//   useEffect(() =>{
+//   auth.onAuthStateChanged((user) => {
+//     if(user){
+//       onValue(ref(db, `/${auth.currentUser.uid}`), snapshot =>{
+//         setNames([]);
+//         const data = snapshot.val();
+//         if(data !== null){
+//           Object.values(data).map(todo => {
+//             setNames((oldArray) => [...oldArray, names]);
+//           });
+//         }
+//       });
+//     } else if (!user) {
+//       navigate("/");
+//     }
+//   });
+// },[]);
 
-  // const [initialState, setState] = useState(values);
-  // const { firstName, lastName, emailAddress, password, contactNumber } = initialState;
-  // const history = useHistory();
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [contactNumber, setcontactNumber] = useState(0);
+  
 
-
-  // const handleInputChange = (e) => {
-  //     let {firstName, value} = e.target;
-  //     setState({
-
-  //       initialState,
-  //       [firstName]: value,
-  //     })
-  // };
-
-  // const handleSubmit = (e) => {
-
-  //   e.preventDefault();
-  //   firebaseDb.child("hotel").push(initialState, (err) =>{
-  //     if(err) {
-  //       console.log(err);
-  //     }
-  //   });
-  //   history.push("/");
-  // };
-
-
-return(
-    <>
-        
-        <div className='container'>
-
-          <form >
-         <div className='gueHeader' >
-
-        <input className="form-control" 
-        style={{width:600, height:40, 
-        borderRadius:10, marginTop:20, marginLeft:20,  border:'2px solid #FF8038',}}
-         type="search" placeholder='Search' aria-label='Search'/>
+  const addAdminToFirebase = () => {
+    if (
+      firstName &&
+      lastName &&
+      email &&
+      password &&
+      contactNumber 
+     
+    ) {
+      set(ref(db, `addAdmin/${uid}`), {
+        sys: {
+          id: uid,
+        },
+        fields: {
+          firstName,
+          slug: uid.toString(),
+          lastName,
+          email,
+          contactNumber,
+          password,
+          
          
-        
-         <p className='nameP' style={{color:'#0B156F',paddingLeft:200, marginTop:20, fontWeight:'bold'}}>Hi, Bella</p>
-<img className='imageP' src={profA} alt="this is car image" 
-style={{ width:50,height:50, borderRadius:10,marginLeft:140, 
-marginTop:10,  }} />
+              },
+          
+      }).then(() => {
+        alert("Admin Added!");
+        setfirstName("");
+        setlastName("");
+        setemail("");
+        setcontactNumber(0);
+        setpassword("");
+      
+        navigate("/admin");
+      });
+    } else {
+      return alert("Please fill all required fields.");
+    }
+  };
 
-        </div>
 
-        <div className='gueBody'>
+  return (
+    <div className="container my-5">
+      
+     
+
+      <div className='gueBody'>
            <div className='gueBodyA'> 
            <h3>Admin</h3>
             
@@ -84,67 +93,172 @@ marginTop:10,  }} />
     
   </li>
   <li class="nav-item">
-  <Link to='/adminView' className="nav-link">View</Link>
+  <Link to='/roomView' className="nav-link">Details</Link>
   </li>
   
 </ul>
 
 
         </div>
+      
+      <div className="row">
+         
+          <div className="row my-4">
+            <div className="col-md-12 col-12 my-auto">
+              <div className="col-md-12 col-12 float-right">
+                <form>
+                  <div className="form-group">
 
-        <div className='container mt-5'>
-        
-       
+                 
+                                    <div class="mb-3 row justify-content-center align-items-center">
 
+                    <label class="col-sm-2 col-form-label" htmlFor="firstName">First Name</label>
+                    <input
+                      type="text"
+                      className="form-control w-25"
+                      value={firstName}
+                      onChange={(e) => setfirstName(e.target.value)}
+                      id="firstName"
+                      placeholder="Michael"
+                      required
+                    />
+            </div>
+
+            
+            <div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="type">Last Name</label>
+<input
+  type="text"
+  className="form-control w-25"
+  value={lastName}
+  onChange={(e) => setlastName(e.target.value)}
+  id="last name"
+  placeholder="Smith"
+  required
+/>
+</div>
+
+            
 <div class="mb-3 row justify-content-center align-items-center">
-    <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
-    <div class="col-sm-3">
-    <input type="text" name="firstName" className="form-control" 
-     class="form-control" id="inputFirstName" />
-    </div>
-  </div>
-  
-  <div class="mb-3 row justify-content-center align-items-center">
-    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
-    <div class="col-sm-3">
-    <input type="text" name="lastName"  
-    className="form-control" id="inputLastName" />
-    </div>
-  </div>
 
-  <div class="mb-3 row justify-content-center align-items-center">
-    <label for="emailAddress" class="col-sm-2 col-form-label">Email Address</label>
-    <div class="col-sm-3">
-    <input type="email"  name="emailAddress"  className="form-control" id="inputPassword" />
-    </div>
-  </div>
+<label class="col-sm-2 col-form-label" htmlFor="type">Email Address</label>
+<input
+  type="email"
+  className="form-control w-25"
+  value={email}
+  onChange={(e) => setemail(e.target.value)}
+  id="email"
+  placeholder="SmithMichael@webmail.co.za"
+  required
+/>
+</div>
 
-  
-
-  <div class="mb-3 row justify-content-center align-items-center">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-3">
-      <input type="password"  name="password" className="form-control" id="inputPassword" />
-    </div>
+ <div class="mb-3 row justify-content-center align-items-center">
+<label class="col-sm-2 col-form-label" htmlFor="password">Password</label>
+<input
+type="password"
+ value={password}
+onChange={(e) => setpassword(e.target.value)}
+className="form-control w-25"
+required
+id="password"
+placeholder="********"
+/>
   </div>
 
-  <div class="mb-3 row justify-content-center align-items-center">
-    <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number</label>
-    <div class="col-sm-3" >
-    <input type="number"  name="contactNumber"  className="form-control" id="inputPassword" />
-    </div>
-  </div>
+                   <div class="mb-3 row justify-content-center align-items-center">
 
-<div className='button justify-content-center align-items-center' style={{marginLeft:250}}>
-<button type="submit" className="btn btn-light">Add</button>
-<button type="button" className="btn btn-light">Clear</button>
+                    <label class="col-sm-2 col-form-label" htmlFor="img1">Contact Number</label>
+                    <input
+                      type="text"
+                      value={contactNumber}
+                      onChange={(e) => setcontactNumber(e.target.value)}
+                      className="form-control w-25"
+                      id="img1"
+                      placeholder="078 085 0852"
+                      required
+                    />
+                    </div>
 
-  </div>
-
-  </div>
-  </form>
+                   
+                </div>
+                <div className='button justify-content-center align-items-center' style={{marginLeft:200}}>
+                <button type="submit" onClick={addAdminToFirebase} className="btn btn-light">Add</button>
+                <button type="button" className="btn btn-light">Clear</button></div>                 
+                                </form>
+              
+              </div>
+            </div>
+          </div>
         </div>
-        </>
-    )
-}
-export default Admin
+    </div>
+  );
+};
+
+export default Admin;
+// useEffect(() =>{
+//   auth.onAuthStateChanged((user) => {
+//     if(user){
+//       onValue(ref(db, `/${auth.currentUser.uid}`), snapshot =>{
+//         setNames([]);
+//         const data = snapshot.val();
+//         if(data !== null){
+//           Object.values(data).map(todo => {
+//             setNames((oldArray) => [...oldArray, names]);
+//           });
+//         }
+//       });
+//     } else if (!user) {
+//       navigate("/");
+//     }
+//   });
+// },[]);
+
+  // const [firstName, setfirstName] = useState("");
+  // const [lastName, setlastName] = useState("");
+  // const [email, setemail] = useState(0);
+  // const [password, setpassword] = useState(0);
+  // const [contactNumber, setcontactNumber] = useState(1);
+  
+
+  // const addAdminToFirebase = () => {
+  //   if (
+  //     firstName &&
+  //     lastName &&
+  //     email &&
+  //     password &&
+  //     contactNumber 
+     
+  //   ) {
+  //     set(ref(db, `addAdmin/${uid}`), {
+  //       sys: {
+  //         id: uid,
+  //       },
+  //       fields: {
+  //         firstName,
+  //         slug: uid.toString(),
+  //         lastName,
+  //         email,
+  //         contactNumber,
+  //         password,
+          
+         
+  //             },
+          
+  //     }).then(() => {
+  //       alert("Room Added!");
+  //       setfirstName("");
+  //       setlastName("");
+  //       setemail(0);
+  //       setcontactNumber("");
+  //       setpassword("");
+      
+  //       navigate("/rooms");
+  //     });
+  //   } else {
+  //     return alert("Please fill all required fields.");
+  //   }
+  // };
+
+  

@@ -33,20 +33,21 @@ return(
     <>
         
         <div className='container-fluid'>
-        <div className='gueHeader' >
+        
 
-        <input className="form-control" 
+        {/* <input className="form-control" 
         style={{width:600, height:40, 
         borderRadius:10, marginTop:20, marginLeft:20,  border:'2px solid #FF8038',}}
          type="search" placeholder='Search' aria-label='Search'/>
-         
+          */}
         
-<p className='nameP' style={{color:'#0B156F',paddingLeft:200, marginTop:20, fontWeight:'bold'}}>Hi, Bella</p>
-<img className='imageP' src={profA} alt="this is car image" 
-style={{ width:50,height:50, borderRadius:10,marginLeft:140, 
-marginTop:10,  }} />
+        <div className='roomHeader'>
+    <p className='userName'>Hi, Leah</p>
+    <img  src={profA} alt="this is car image" style={{ width:50,height:50,  
+    marginTop:10,  }} 
+    />
+    </div>
 
-        </div>
 
         <div className='gueBody'>
            <div className='gueBodyA'> 
@@ -62,7 +63,7 @@ marginTop:10,  }} />
     
   </li>
   <li class="nav-item">
-  <Link to='/roomView' className="nav-link active">View</Link>
+  <Link to='/roomView' className="nav-link active">Details</Link>
   </li>
   
 </ul>

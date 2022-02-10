@@ -35,7 +35,7 @@ marginTop:10,  }} />
 
 
             
-{/* {
+{
     guest.map((item)=>
     
             <div className="box-container">
@@ -65,7 +65,7 @@ marginTop:10,  }} />
            
             </div>
                 )
-            } */}
+            }
         </div>
 
         </div>

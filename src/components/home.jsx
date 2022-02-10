@@ -30,7 +30,7 @@ return (
     <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item"> 
             
-            <Link to="/" class={`nav-link ${path==='/'?'active':'text-white'}`} aria-current="page"> 
+            <Link to="/landing" class={`nav-link ${path==='/landing'?'active':'text-white'}`} aria-current="page"> 
             <FontAwesomeIcon icon={faHome} /><span class="ms-2">Home</span> </Link> </li>
             
             
@@ -51,7 +51,7 @@ return (
     
             <li> <Link to="/admin" class={`nav-link ${path==='/admin'?'active':'text-white'}`}> 
             
-            <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Amin</span></Link> </li>
+            <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Admin</span></Link> </li>
 
             <li> <Link to="/AddHotels" class={`nav-link ${path==='/AddHotels'?'active':'text-white'}`}> 
             

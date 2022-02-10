@@ -239,14 +239,14 @@ marginTop:10,  }} />
                     />
                   </div>
                 </div>
-                  <div className="form-group form-check"></div>
+
+                  <div className='button justify-content-center align-items-center' style={{marginLeft:200}}>
+                <button type="submit" onClick={addHotelToFirebase}
+                                            className="btn btn-light">Add</button>
+                <button type="button" className="btn btn-light">Clear</button></div>
+                
                 </form>
-                <button
-                  className="btn btn-block btn-outline-primary"
-                  onClick={addHotelToFirebase}
-                >
-                  ADD HOTEL
-                </button>
+               
               </div>
             </div>
           </div>

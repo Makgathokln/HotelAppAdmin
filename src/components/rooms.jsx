@@ -98,20 +98,7 @@ const Rooms = () => {
   return (
     <div className="container my-5">
       
-      <div className='gueHeader' >
-
-      <input className="form-control" 
-        style={{width:600, height:40, 
-        borderRadius:10, marginTop:20, marginLeft:20,  border:'2px solid #FF8038',}}
-         type="search" placeholder='Search' aria-label='Search' disabled/>
-         
-        
-         <p className='nameP' style={{color:'#0B156F',paddingLeft:200, marginTop:20, fontWeight:'bold'}}>Hi, Bella</p>
-<img className='imageP' src={profA} alt="this is car image" 
-style={{ width:50,height:50, borderRadius:10,marginLeft:140, 
-marginTop:10,  }} />
-      
-      </div>
+     
 
       <div className='gueBody'>
            <div className='gueBodyA'> 
@@ -127,7 +114,7 @@ marginTop:10,  }} />
     
   </li>
   <li class="nav-item">
-  <Link to='/roomView' className="nav-link">View</Link>
+  <Link to='/roomView' className="nav-link">Details</Link>
   </li>
   
 </ul>
@@ -204,7 +191,7 @@ marginTop:10,  }} />
 
                     <label class="col-sm-2 col-form-label" htmlFor="img1">Image 1</label>
                     <input
-                      type="text"
+                      type="url"
                       value={image1}
                       onChange={(e) => setImage1(e.target.value)}
                       className="form-control w-25"
@@ -218,7 +205,7 @@ marginTop:10,  }} />
 
                     <label class="col-sm-2 col-form-label" htmlFor="img2">Image 2</label>
                     <input
-                      type="text"
+                      type="url"
                       className="form-control w-25"
                       value={image2}
                       onChange={(e) => setImage2(e.target.value)}
@@ -232,7 +219,7 @@ marginTop:10,  }} />
 
                     <label class="col-sm-2 col-form-label" htmlFor="img3">Image 3</label>
                     <input
-                      type="text"
+                      type="url"
                       value={image3}
                       onChange={(e) => setImage3(e.target.value)}
                       className="form-control w-25"
@@ -246,7 +233,7 @@ marginTop:10,  }} />
 
                     <label class="col-sm-2 col-form-label" htmlFor="img4">Image 4</label>
                     <input
-                      type="text"
+                      type="url"
                       value={image4}
                       onChange={(e) => setImage4(e.target.value)}
                       className="form-control w-25"
@@ -256,14 +243,11 @@ marginTop:10,  }} />
                     />
                   </div>
                 </div>
-                  <div className="form-group form-check"></div>
-                </form>
-                <button
-                  className="btn btn-block btn-outline-primary"
-                  onClick={addRoomToFirebase}
-                >
-                  ADD ROOM
-                </button>
+                <div className='button justify-content-center align-items-center' style={{marginLeft:200}}>
+                <button type="submit" onClick={addRoomToFirebase} className="btn btn-light">Add</button>
+                <button type="button" className="btn btn-light">Clear</button></div>                </form>
+               
+                
               </div>
             </div>
           </div>

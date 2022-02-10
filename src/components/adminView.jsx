@@ -42,7 +42,7 @@ marginTop:10,  }} />
     
   </li>
   <li class="nav-item">
-  <Link to='/roomView' className="nav-link active">View</Link>
+  <Link to='/roomView' className="nav-link active">Details</Link>
   </li>
   
 </ul>
