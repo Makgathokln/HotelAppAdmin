@@ -209,3 +209,9 @@ padding-bottom: 40;
     display: flex;
     flex-direction: row;
 }
+
+.roomHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+}

@@ -36,7 +36,7 @@ const AddHotels = () => {
         sys: {
           id: uid,
         },
-        fields: {
+      
           name,    
                 slug: uid.toString(),
           
@@ -55,7 +55,7 @@ const AddHotels = () => {
               },
             },
           ],
-        },
+        
       }).then(() => {
         alert("Hotel Added!");
         setname("");
@@ -78,27 +78,10 @@ const AddHotels = () => {
   
   return (
     <div className="container my-5">
-      
-      <div className='hotels' >
-
-      {/* <input className="form-control" 
-        style={{width:600, height:40, 
-        borderRadius:10, marginTop:20, marginLeft:20,  border:'2px solid #FF8038',}}
-         type="search" placeholder='Search' aria-label='Search' disabled/> */}
-         
-        
-         {/* <p className='hotels'>Hi, Bella</p>
-    <img className='hotels'  src={profA} alt="this is car image" 
-style={{ width:50,height:50, borderRadius:10,marginLeft:140, 
-marginTop:10,  }} /> */}
-      
-      </div>
-
-      <div className='gueBody'>
-           <div className='gueBodyA'> 
+     
+      <div >
            <h3>Hotels</h3>
             
-            </div>
            
             <hr style={{  color:'#444',border: '1px solid #444', marginLeft:10, marginBottom:40}}/>
 
@@ -108,7 +91,7 @@ marginTop:10,  }} /> */}
     
   </li>
   <li class="nav-item">
-  <Link to='/roomView' className="nav-link">View</Link>
+  <Link to='/hotelview' className="nav-link">Details</Link>
   </li>
   
 </ul>
@@ -210,7 +193,7 @@ marginTop:10,  }} /> */}
                     /> */}
 
                   <select class="form-select w-25" aria-label="Default select example" style={{marginLeft:40}}  selected={city}
-                      onChange={() => setcity(!province)}>
+                      onChange={() => setprovince(!province)}>
                        <option selected>Select Province</option>
                        <option value={province}>Limpopo</option>
                         <option value={province}>Gauteng</option>

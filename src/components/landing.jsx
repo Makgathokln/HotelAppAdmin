@@ -13,7 +13,9 @@ export default function Landing(){
         return(
             <>
             <div className='container-fluid'>
-<div className='LandHeader'>
+
+                
+{/* <div className='LandHeader'>
 
     
 <h4 style={{color:'#0B156F'}}>Welcome To Our Admin System</h4>
@@ -22,7 +24,7 @@ export default function Landing(){
 
 
 
-</div>
+</div> */}
 <div className='LandBody'>
                 <h1 style={{color:'#666666', marginTop:20}}>Reports</h1>
 

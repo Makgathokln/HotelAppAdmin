@@ -42,7 +42,7 @@ return(
           */}
         
         <div className='roomHeader'>
-    <p className='userName'>Hi, Leah</p>
+    <p >Hi, Leah</p>
     <img  src={profA} alt="this is car image" style={{ width:50,height:50,  
     marginTop:10,  }} 
     />

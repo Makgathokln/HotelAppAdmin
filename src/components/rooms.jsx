@@ -98,7 +98,7 @@ const Rooms = () => {
       
      
 
-      <div className='gueBody'>
+      <div >
            <div className='gueBodyA'> 
            <h3>Rooms</h3>
             
