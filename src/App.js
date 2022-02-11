@@ -20,7 +20,8 @@ import RoomView from "./components/roomView";
 import Signup from "./components/Signup";
 import Home from "./components/home";
 import Hotelview from "./components/hotelview";
-
+import Profile from "./components/profile";
+import Forgot from "./components/forgot";
 import { useNavigate } from "react-router-dom";
 
 import { auth } from "./firebase";
@@ -60,6 +61,8 @@ function App() {
                   <Route path="/adminView" element={<AdminView />} />
                   <Route path="/roomView" element={<RoomView />} />
                   <Route path="/hotelview" element={<Hotelview />} />
+                  <Route path="/forgot" element={<Forgot />}/>
+                  <Route path="/profile" element={<Profile/>}/>
             </Routes>
           </>
         ) : (
