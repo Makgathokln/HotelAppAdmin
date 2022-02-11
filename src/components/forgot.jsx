@@ -13,7 +13,7 @@ import pin3 from "../images/pin3.jpg";
 
 import "../App.css";
 
-const SignIn = ({setUser}) => {
+const Forgot = ({setUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -95,4 +95,4 @@ const SignIn = ({setUser}) => {
   );
 };
 
-export default SignIn;
+export default Forgot;

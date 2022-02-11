@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import  {Link} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import { signInWithEmailAndPassword } from "firebase/auth";
 import {
@@ -88,9 +89,9 @@ const SignIn = ({setUser}) => {
               </div>
 
               <div class="mb-3 col-xs-4">
-                <a href="#" class="link-secondary" style={{marginLeft:40}}>
+              <Link to="/forgot" class="link-secondary" style={{marginLeft:40}}>
                   Forgot Your Password?
-                </a>
+                </Link>
               </div>
 
               <div class="row" style={{marginLeft:40}}>

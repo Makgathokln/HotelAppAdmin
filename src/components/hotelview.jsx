@@ -46,18 +46,18 @@ const Hotelview = () => {
     //     }
     // }
 
-// const deleteHotel = (id) =>{
-//     remove(ref(db, `/addHotels/${id}`)).then(() => {
-//     alert("Hotel deleted Succesfully");
-//     navigate("/hotelview");
-//     })
-// }
+        const deleteHotel = (id) =>{
+    remove(ref(db, `/addHotels/${id}`)).then(() => {
+    alert("Hotel deleted Succesfully");
+    navigate("/hotelview");
+    })
+        }
 
 // function deleteHotel   (id) =>{
 //     if(window.confirm('Are yoy')){
 //         db.child(`addHotels/${id}`).remove((err) =>{
 //             if(err) {
-//                 console.log(err);
+//                 co`nsole.log(err);
 //             }
 //         })
 //     }
@@ -116,7 +116,7 @@ return(
       <td class="col-sm-2">Hotel Name</td>
       <td class="col-sm-2">Email Address</td>
       <td class="col-sm-2">Contacts</td>
-      <td class="col-sm-2">City</td>
+      <td class="col-sm-2">Description</td>
       <td class="col-sm-3">Action</td>
 
 
@@ -132,7 +132,7 @@ return(
       <th>{addHotel.email}</th>
       <th>{addHotel.contactNumber}</th>
 
-      <th>{addHotel.city}</th>
+      <th>{addHotel.description}</th>
 
       <td>
       <button type="button" className="btn btn-lightd" style={{width:70, marginLeft:10, color:'#fff', backgroundColor:'#99ff99'}}>View</button>

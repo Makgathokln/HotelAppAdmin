@@ -19,7 +19,7 @@ const Home = () => {
     const path=location.pathname
     console.log(path)
 return (
-<div >
+<div>
     
     <div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white " 
     style={{width: 250}}> 
