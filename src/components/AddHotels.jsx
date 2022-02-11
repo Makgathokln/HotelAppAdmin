@@ -13,10 +13,11 @@ const AddHotels = () => {
   const [name, setname] = useState("");
   const [location, setlocation] = useState("");
   const [description, setdescription] = useState("");
+  const [city, setcity] = useState("");
+  const [province, setprovince] = useState("");
+  const [contactNumber, setcontactNumber] = useState("");
+  const [email, setemail] = useState("");
   const [image1, setImage1] = useState("");
-  const [image2, setImage2] = useState("");
-  const [image3, setImage3] = useState("");
-  const [image4, setImage4] = useState("");
 
   const addHotelToFirebase = () => {
     if (
@@ -24,10 +25,12 @@ const AddHotels = () => {
       name &&
       location &&
       description &&
-      image1 &&
-      image2 &&
-      image3 &&
-      image4
+      city &&
+      description &&
+      province &&
+      contactNumber &&
+      email &&
+      image1
     ) {
       set(ref(db, `addHotels/${uid}`), {
         sys: {
@@ -39,32 +42,15 @@ const AddHotels = () => {
           
           location,
           description,
+          city,
+          province,
+          contactNumber,
+          email,
           images: [
             {
               fields: {
                 file: {
                   url: image1,
-                },
-              },
-            },
-            {
-              fields: {
-                file: {
-                  url: image2,
-                },
-              },
-            },
-            {
-              fields: {
-                file: {
-                  url: image3,
-                },
-              },
-            },
-            {
-              fields: {
-                file: {
-                  url: image4,
                 },
               },
             },
@@ -75,11 +61,12 @@ const AddHotels = () => {
         setname("");
         setlocation("");
         setdescription("");
-        
+        setcity("");
+        setprovince("");
+        setcontactNumber("");
+        setemail("");
         setImage1("");
-        setImage2("");
-        setImage3("");
-        setImage4("");
+       
 
         navigate("/AddHotels");
       });
@@ -147,7 +134,7 @@ marginTop:10,  }} /> */}
                       value={name}
                       onChange={(e) => setname(e.target.value)}
                       id="name"
-                      placeholder="Hotel Name"
+                      placeholder="Mooi Hotel"
                       required
                     />
             </div>
@@ -162,7 +149,7 @@ marginTop:10,  }} /> */}
   value={location}
   onChange={(e) => setlocation(e.target.value)}
   id="location"
-  placeholder="Location "
+  placeholder="66 Hans Street "
   required
 />
 </div>
@@ -171,82 +158,124 @@ marginTop:10,  }} /> */}
             <div class="mb-3 row justify-content-center align-items-center">
 
 <label class="col-sm-2 col-form-label" htmlFor="type">Description</label>
-<input
-  type="text"
-  className="form-control w-25"
-  value={description}
-  onChange={(e) => setdescription(e.target.value)}
-  id="description"
-  placeholder="Description"
-  required
-/>
+<textarea
+                      className=" col-sm-2 form-control w-25"
+                      value={description}
+                      onChange={(e) => setdescription(e.target.value)}
+                      id="description"
+                      placeholder="Short description of room."
+                      rows="3"
+                    ></textarea>
+
+                  
 </div>
                 
 
-                   <div class="mb-3 row justify-content-center align-items-center">
+                  
 
-                    <label class="col-sm-2 col-form-label" htmlFor="img1">Image 1</label>
-                    <input
+                    <div class="mb-3 row justify-content-center align-items-center">
+
+                    <label class="col-sm-2 col-form-label" htmlFor="img2">City </label>
+                    {/* <input
                       type="text"
-                      value={image1}
-                      onChange={(e) => setImage1(e.target.value)}
                       className="form-control w-25"
-                      id="img1"
-                      placeholder="Image 1 URL"
+                      value={city}
+                      onChange={(e) => setcity(e.target.value)}
+                      id="city"
+                      placeholder="Polokwane"
                       required
-                    />
+                    /> */}
+
+                    <select class="form-select w-25" aria-label="Default select example" style={{marginLeft:40}}  selected={city}
+                      onChange={() => setcity(!city)}>
+                       <option selected>Select City</option>
+                       <option value={city}>Polokwane</option>
+                      <option value={city}>Pretoria</option>
+                       <option value={city}>Cape Town</option>
+                    </select>
+
+                  </div>
+
+                  <div class="mb-3 row justify-content-center align-items-center">
+
+                    <label class="col-sm-2 col-form-label" htmlFor="img3">Province</label>
+                    {/* <input
+                      type="text"
+                      value={province}
+                      onChange={(e) => setprovince(e.target.value)}
+                      className="form-control w-25"
+                      id="province"
+                      placeholder="Limpopo"
+                      required
+                    /> */}
+
+                  <select class="form-select w-25" aria-label="Default select example" style={{marginLeft:40}}  selected={city}
+                      onChange={() => setcity(!province)}>
+                       <option selected>Select Province</option>
+                       <option value={province}>Limpopo</option>
+                        <option value={province}>Gauteng</option>
+                       <option value={province}>North West</option>
+                       <option value={province}>Free State</option>
+                        <option value={province}>Western Cape</option>
+                       <option value={province}>Northern Cape</option>
+                       <option value={province}>Eastern Cape</option>
+                        <option value={province}>Gauteng</option>
+                       <option value={province}>Kwa-Zulu Natal</option>
+                  </select>
                     </div>
 
                     <div class="mb-3 row justify-content-center align-items-center">
 
-                    <label class="col-sm-2 col-form-label" htmlFor="img2">Image 2</label>
+                    <label class="col-sm-2 col-form-label" htmlFor="img4">Email Address</label>
                     <input
                       type="text"
+                      value={email}
+                      onChange={(e) => setemail(e.target.value)}
                       className="form-control w-25"
-                      value={image2}
-                      onChange={(e) => setImage2(e.target.value)}
-                      id="img2"
-                      placeholder="Image 2 URL"
+                      id="email"
+                      placeholder="MooiHotel@webmail.co.za"
                       required
                     />
                   </div>
 
                   <div class="mb-3 row justify-content-center align-items-center">
 
-                    <label class="col-sm-2 col-form-label" htmlFor="img3">Image 3</label>
-                    <input
-                      type="text"
-                      value={image3}
-                      onChange={(e) => setImage3(e.target.value)}
-                      className="form-control w-25"
-                      id="img3"
-                      placeholder="Image 3 URL"
-                      required
-                    />
-                    </div>
+            <label class="col-sm-2 col-form-label" htmlFor="img1">Contact Number</label>
+            <input
+  type="text"
+  value={contactNumber}
+  onChange={(e) => setcontactNumber(e.target.value)}
+  className="form-control w-25"
+  id="contactNumber"
+  placeholder="011 282 1520"
+  required
+/>
+</div>            
 
-                    <div class="mb-3 row justify-content-center align-items-center">
+<div class="mb-3 row justify-content-center align-items-center">
 
-                    <label class="col-sm-2 col-form-label" htmlFor="img4">Image 4</label>
-                    <input
-                      type="text"
-                      value={image4}
-                      onChange={(e) => setImage4(e.target.value)}
-                      className="form-control w-25"
-                      id="img4"
-                      placeholder="Image 4 URL"
-                      required
-                    />
-                  </div>
+<label class="col-sm-2 col-form-label" htmlFor="img1">Image Url</label>
+<input
+type="url"
+value={image1}
+onChange={(e) => setImage1(e.target.value)}
+className="form-control w-25"
+id="image1"
+placeholder="https://images.co.za"
+required
+/>
+</div>
+
+
                 </div>
 
-                  <div className='button justify-content-center align-items-center' style={{marginLeft:200}}>
-                <button type="submit" onClick={addHotelToFirebase}
-                                            className="btn btn-light">Add</button>
-                <button type="button" className="btn btn-light">Clear</button></div>
                 
                 </form>
                
+                <div className='button justify-content-center align-items-center' style={{marginLeft:200}}>
+                <button type="submit" onClick={addHotelToFirebase}
+                                            className="btn btn-light">Add</button>
+                <button type="button" className="btn btn-light">Clear</button></div>
               </div>
             </div>
           </div>

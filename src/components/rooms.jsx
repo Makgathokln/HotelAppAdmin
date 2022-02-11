@@ -241,10 +241,11 @@ const Rooms = () => {
                     />
                   </div>
                 </div>
+                        </form>
+               
                 <div className='button justify-content-center align-items-center' style={{marginLeft:200}}>
                 <button type="submit" onClick={addRoomToFirebase} className="btn btn-light">Add</button>
-                <button type="button" className="btn btn-light">Clear</button></div>                </form>
-               
+                <button type="button" className="btn btn-light">Clear</button></div>      
                 
               </div>
             </div>

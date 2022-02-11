@@ -54,7 +54,7 @@ return (
             
             <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Admin</span></Link> </li>
 
-            <li> <Link to="/AddRooms" class={`nav-link ${path==='/AddRooms'?'active':'text-white'}`}> 
+            <li> <Link to="/AddHotels" class={`nav-link ${path==='/AddHotels'?'active':'text-white'}`}> 
             
             <FontAwesomeIcon icon={faUser} /><span class="ms-2">Add Hotels</span></Link> </li>
         </ul>
