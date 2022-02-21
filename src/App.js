@@ -64,6 +64,7 @@ function App() {
                   <Route path="/hotelview" element={<Hotelview />} />
                   <Route path="/forgot" element={<Forgot />}/>
                   <Route path="/Edit" element={<Edit />}/>
+                    <Route path="/Edit/:slug" element={<Edit/>}/>
                   <Route path="/profile" element={<Profile/>}/>
             </Routes>
           </>
