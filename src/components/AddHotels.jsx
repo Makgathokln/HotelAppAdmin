@@ -17,7 +17,14 @@ const AddHotels = () => {
   const [province, setprovince] = useState("");
   const [contactNumber, setcontactNumber] = useState("");
   const [email, setemail] = useState("");
+  const [price1, setprice1] = useState("");
+  const [price2, setprice2] = useState("");
+  const [price3, setprice3] = useState("");
   const [image1, setImage1] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
+
+
 
   const addHotelToFirebase = () => {
     if (
@@ -30,7 +37,12 @@ const AddHotels = () => {
       province &&
       contactNumber &&
       email &&
-      image1
+      price1 &&
+      price2 &&
+      price3 &&
+      image1 &&
+      image2 &&
+      image3 
     ) {
       set(ref(db, `addHotels/${uid}`), {
         sys: {
@@ -46,14 +58,23 @@ const AddHotels = () => {
           province,
           contactNumber,
           email,
+          price1,
+          price2,
+          price3,
           images: [
             {
-              fields: {
-                file: {
+             
                   url: image1,
                 },
-              },
-            },
+                {
+             
+                  url: image2,
+                },
+                {
+             
+                  url: image3,
+                },
+              
           ],
         
       }).then(() => {
@@ -64,8 +85,13 @@ const AddHotels = () => {
         setcity("");
         setprovince("");
         setcontactNumber("");
+        setprice1("");
+        setprice2("");
+        setprice3("");
         setemail("");
         setImage1("");
+        setImage2("");
+        setImage3("");
        
 
         navigate("/AddHotels");
@@ -79,7 +105,7 @@ const AddHotels = () => {
   return (
     <div className="container my-5">
      
-      <div >
+      <div>
            <h3>Hotels</h3>
             
            
@@ -209,17 +235,48 @@ const AddHotels = () => {
 
                     <div class="mb-3 row justify-content-center align-items-center">
 
-                    <label class="col-sm-2 col-form-label" htmlFor="img4">Email Address</label>
+                    <label class="col-sm-2 col-form-label" htmlFor="img4">Price 1</label>
                     <input
                       type="text"
-                      value={email}
-                      onChange={(e) => setemail(e.target.value)}
+                      value={price1}
+                      onChange={(e) => setprice1(e.target.value)}
                       className="form-control w-25"
-                      id="email"
-                      placeholder="MooiHotel@webmail.co.za"
+                      id="price1"
+                      
                       required
                     />
                   </div>
+
+                  <div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="img4">Price 2</label>
+<input
+  type="text"
+  value={price2}
+  onChange={(e) => setprice2(e.target.value)}
+  className="form-control w-25"
+  id="price2"
+  
+  required
+/>
+</div>
+
+<div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="img4">Price 3</label>
+<input
+  type="text"
+  value={price3}
+  onChange={(e) => setprice3(e.target.value)}
+  className="form-control w-25"
+  id="price3"
+  
+  required
+/>
+</div>
+
+
+
 
                   <div class="mb-3 row justify-content-center align-items-center">
 
@@ -248,6 +305,50 @@ placeholder="https://images.co.za"
 required
 />
 </div>
+
+<div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="img1">Image Url</label>
+<input
+type="url"
+value={image2}
+onChange={(e) => setImage2(e.target.value)}
+className="form-control w-25"
+id="image2"
+placeholder="https://images.co.za"
+required
+/>
+</div>
+
+<div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="img1">Image Url</label>
+<input
+type="url"
+value={image3}
+onChange={(e) => setImage3(e.target.value)}
+className="form-control w-25"
+id="image3"
+placeholder="https://images.co.za"
+required
+/>
+</div>
+
+<div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="type">Location</label>
+<input
+  type="text"
+  className="form-control w-25"
+  value={location}
+  onChange={(e) => setlocation(e.target.value)}
+  id="location"
+  placeholder="66 Hans Street "
+  required
+/>
+</div>
+
+                    
 
 
                 </div>
