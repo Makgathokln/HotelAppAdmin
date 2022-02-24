@@ -87,12 +87,12 @@ const [roomprice2, setRoomprice2] = useState(0);
 
         ],
         room:[{
-         roomtype,roomurl,
-         beds,roomnumber,roomprice
+         roomtype:roomtype,roomurl:roomurl,
+         beds:beds,roomnumber:roomnumber,roomprice:roomprice
         },
         {
-          roomtype2,roomurl2,
-          beds2,roomnumber2,roomprice2
+          roomtype:roomtype2,roomurl:roomurl2,
+          beds:beds2,roomnumber:roomnumber2,roomprice:roomprice2
         }
       ],
 
