@@ -6,341 +6,338 @@ import { v4 } from "uuid";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
-  const { slug } = useParams();
-  const state = useSelector((state) => state);
-  const navigate = useNavigate();
-  const uid = v4();
+    const { slug } = useParams();
+    const state = useSelector((state) => state);
+    const navigate = useNavigate();
+    const uid = v4();
 
-  const [name, setName] = useState("");
-  const [type, settype] = useState("");
-  const [price, setprice] = useState(0);
-  const [size, setsize] = useState(0);
-  const [capacity, setcapacity] = useState(1);
-  const [pets, setpets] = useState(false);
-  const [breakfast, setbreakfast] = useState(false);
-  const [description, setdescription] = useState("");
-  const [extras, setextras] = useState("");
-  const [image1, setImage1] = useState("");
-  const [image2, setImage2] = useState("");
-  const [image3, setImage3] = useState("");
-  const [image4, setImage4] = useState("");
+    const [name, setname] = useState("");
+    const [location, setlocation] = useState("");
+    const [description, setdescription] = useState("");
+    const [city, setcity] = useState("");
+    const [province, setprovince] = useState("");
+    const [contactNumber, setcontactNumber] = useState("");
+    const [email, setemail] = useState("");
+    const [price1, setprice1] = useState("");
+    const [price2, setprice2] = useState("");
+    const [price3, setprice3] = useState("");
+    const [image1, setImage1] = useState("");
+    const [image2, setImage2] = useState("");
+    const [image3, setImage3] = useState("");
 
-  function getRoom(arg) {
-    
-    const idiRooms = state[0][0].rooms.map((item) => item);
-    const roomDatas = idiRooms.filter((roomItem) => roomItem.slug === arg);
-    return roomDatas;
-  }
+    function getHotel(arg) {
 
-  if (state.length > 0 && slug) {
-    const roomData = getRoom(slug);
-    console.log(roomData);
-    if (roomData.length > 0) {
-      var id = roomData[0].id;
-      var newtype = roomData[0].type;
-      var newname = roomData[0].name;
-      var newdescription = roomData[0].description;
-      var newcapacity = roomData[0].capacity;
-      var newsize = roomData[0].size;
-      var newprice = roomData[0].price;
-      var newextras = roomData[0].extras;
-      var newbreakfast = roomData[0].breakfast;
-      var newpets = roomData[0].pets;
-      const images = roomData[0].images;
-      var img1 = images[0];
-      var img2 = images[1];
-      var img3 = images[2];
-      var img4 = images[3];
+        const idiHotels = state[0][0].addHotels.map((item) => item);
+        const hotelDatas = idiHotels.filter((hotelItem) => hotelItem.slug === arg);
+        return hotelDatas;
     }
-  }
 
-  useEffect(() => {
-    setName(newname || "");
-    setcapacity(newcapacity);
-    settype(newtype);
-    setdescription(newdescription);
-    setprice(newprice);
-    setsize(newsize);
-    setextras(newextras && newextras.toString());
-    setbreakfast(newbreakfast);
-    setpets(newpets);
-    setImage1(img1);
-    setImage2(img2);
-    setImage3(img3);
-    setImage4(img4);
-    console.log(name);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (state.length > 0 && slug) {
+        const hotelData = getHotel(slug);
+        console.log(hotelData);
+        if (hotelData.length > 0) {
+            var id = hotelData[0].id;
+            var newlocation = hotelData[0].type;
+            var newname = hotelData[0].name;
+            var newdescription = hotelData[0].description;
+            var newcity = hotelData[0].city;
+            var newprovince = hotelData[0].province;
+            var newprice1 = hotelData[0].price1;
+            var newprice2 = hotelData[0].price2;
+            var newprice3 = hotelData[0].price3;
 
-  async function updateRoomFirebase() {
-    if (
-      name &&
-      type &&
-      price &&
-      size &&
-      description &&
-      extras &&
-      image1 &&
-      image2 &&
-      image3 &&
-      image4
-    ) {
-      await update(ref(db, `hotels/${id}`), {
-        sys: {
-          id,
-        },
-        fields: {
-          name,
-          slug: uid.toString(),
-          type: newtype,
-          price,
-          size,
-          capacity,
-          pets,
-          breakfast,
-          featured: false,
-          description: description,
-          extras: extras.split(","),
-          images: [
-            {
-              fields: {
-                file: {
-                  url: image1,
-                },
-              },
-            },
-            {
-              fields: {
-                file: {
-                  url: image2,
-                },
-              },
-            },
-            {
-              fields: {
-                file: {
-                  url: image3,
-                },
-              },
-            },
-            {
-              fields: {
-                file: {
-                  url: image4,
-                },
-              },
-            },
-          ],
-        },
-      }).then(() => {
-        alert("Room updated.!");
-        setName("");
-        settype("");
-        setcapacity(0);
-        setdescription("");
-        setextras("");
-        setbreakfast(false);
-        setpets(false);
-        setprice(0);
-        setsize(0);
-        setImage1("");
-        setImage2("");
-        setImage3("");
-        setImage4("");
+            var newcontactNumber = hotelData[0].contactNumber;
+            var newemail = hotelData[0].email;
 
-        navigate(`/rooms`);
-      });
-    } else {
-      return alert("Please fill all required fields.");
+            const images = hotelData[0].images;
+            var img1 = images[0];
+            var img2 = images[1];
+            var img3 = images[2];
+            var img4 = images[3];
+        }
     }
-  }
 
-  return (
-    <>
-      {slug ? (
-        <div className="container my-5">
-          <div className="row">
-            <div className="col-md-10 mx-auto col-12 card shadow-lg border-0 p-4">
-              <div>
-                <h1 className="display-4 text-center">Update Room</h1>
-              </div>
+    useEffect(() => {
+        setname(newname || "");
+        setdescription(newdescription);
+        setprice1(newprice1);
+        setprice2(newprice2);
+        setprice3(newprice3);
+        //setextras(newextras && newextras.toString());
+        setcity(newcity);
+        setprovince(newprovince);
+        setImage1(img1);
+        setImage2(img2);
+        setImage3(img3);
+        //setImage4(img4);
+        console.log(name);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-              <div className="row my-4">
-                <div className="col-md-12 col-12 my-auto">
-                  <div className="col-md-12 col-12 float-right">
-                    <form>
-                      <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          id="name"
-                          placeholder="Room name."
-                          required
-                        />
+    async function updateRoomFirebase() {
+        if (
+            name &&
+            location &&
+            description &&
+            city &&
+            description &&
+            province &&
+            contactNumber &&
+            email &&
+            price1 &&
+            price2 &&
+            price3 &&
+            image1 &&
+            image2 &&
+            image3
+        ) {
+            await update(ref(db, `hotels/${id}`), {
+                sys: {
+                    id,
+                },
+                fields: {
+                    name,
+                    slug: uid.toString(),
+                    price1,
+                    price2,
+                    price3,
 
-                        <label htmlFor="price">Price</label>
-                        <input
-                          type="number"
-                          value={price}
-                          onChange={(e) => setprice(e.target.value)}
-                          className="form-control"
-                          required
-                          id="price"
-                          placeholder="Room price"
-                        />
-                        <label htmlFor="size">Size</label>
-                        <input
-                          type="number"
-                          className="form-control"
-                          value={size}
-                          onChange={(e) => setsize(e.target.value)}
-                          required
-                          id="size"
-                          placeholder="Room Size"
-                        />
-                        <label htmlFor="capacity">Capacity</label>
-                        <input
-                          type="number"
-                          value={capacity}
-                          onChange={(e) => setcapacity(e.target.value)}
-                          className="form-control"
-                          required
-                          id="capacity"
-                          placeholder="Capacitiy"
-                        />
-                        <div className="custom-control custom-checkbox my-1">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            checked={breakfast}
-                            onChange={() => setbreakfast(!breakfast)}
-                            name="breakfast"
-                            id="breakfast"
-                          />
-                          <label
-                            htmlFor="breakfast"
-                            className="custom-control-label"
-                          >
-                            Breakfast
-                          </label>
-                        </div>
-                        <div className="custom-control custom-checkbox my-1">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            name="pets"
-                            checked={pets}
-                            onChange={() => setpets(!pets)}
-                            id="pets"
-                          />
-                          <label
-                            htmlFor="pets"
-                            className="custom-control-label"
-                          >
-                            Pets
-                          </label>
-                        </div>
+                    city,
+                    province,
+                    location,
+                    description: description,
+                    images: [
+                        {
+                            fields: {
+                                file: {
+                                    url: image1,
+                                },
+                            },
+                        },
+                        {
+                            fields: {
+                                file: {
+                                    url: image2,
+                                },
+                            },
+                        },
+                        {
+                            fields: {
+                                file: {
+                                    url: image3,
+                                },
+                            },
+                        },
+                       
+                    ],
+                },
+            }).then(() => {
+                alert("Room updated.!");
+                setname("");
+                setcity(0);
+                setdescription("");
+                setprovince("");
+                setprice1(0);
+                setprice2(0);
+                setprice3(0);
 
-                        <label htmlFor="description">Description</label>
-                        <textarea
-                          className="form-control"
-                          value={description}
-                          onChange={(e) => setdescription(e.target.value)}
-                          id="description"
-                          placeholder="Short description of room."
-                          rows="3"
-                        ></textarea>
 
-                        <label for="extras">Extras</label>
-                        <textarea
-                          class="form-control"
-                          value={extras}
-                          onChange={(e) => setextras(e.target.value)}
-                          id="extras"
-                          placeholder="Separated by comma ( , )"
-                          rows="3"
-                        ></textarea>
+                setlocation("");
+                setImage1("");
+                setImage2("");
+                setImage3("");
+                // setImage4("");
 
-                        <label htmlFor="img1">Image 1</label>
-                        <input
-                          type="text"
-                          value={image1}
-                          onChange={(e) => setImage1(e.target.value)}
-                          className="form-control"
-                          id="img1"
-                          placeholder="Image 1 URL"
-                          required
-                        />
-                        <label htmlFor="img2">Image 2</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={image2}
-                          onChange={(e) => setImage2(e.target.value)}
-                          id="img2"
-                          placeholder="Image 2 URL"
-                          required
-                        />
+                navigate(`/Edit`);
+            });
+        } else {
+            return alert("Please fill all required fields.");
+        }
+    }
 
-                        <label htmlFor="img3">Image 3</label>
-                        <input
-                          type="text"
-                          value={image3}
-                          onChange={(e) => setImage3(e.target.value)}
-                          className="form-control"
-                          id="img3"
-                          placeholder="Image 3 URL"
-                          required
-                        />
-
-                        <label htmlFor="img4">Image 4</label>
-                        <input
-                          type="text"
-                          value={image4}
-                          onChange={(e) => setImage4(e.target.value)}
-                          className="form-control"
-                          id="img4"
-                          placeholder="Image 4 URL"
-                          required
-                        />
-                      </div>
-
-                      <div className="form-group form-check"></div>
-                    </form>
-                    <button
-                      className="btn btn-block btn-outline-primary"
-                      onClick={updateRoomFirebase}
-                    >
-                      UPDATE ROOM
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
+    return (
         <>
-          <div className="container roomerror">
-            <div className="row my-5">
-              <div className="col-md-6 col-12 mx-auto">
-                <div className="card shadow-lg border-0 p-4 error">
-                  <h1 className="text-center display-4">Update</h1>
-                  <h3>Please select room from Room page..</h3>
-                  <Link to="/rooms" className="btn btn-warning mt-4 ">
-                    Back to Rooms
-                  </Link>
+            {slug ? (
+                <div className="container my-5">
+                    <div className="row">
+                        <div className="col-md-10 mx-auto col-12 card shadow-lg border-0 p-4">
+                            <div>
+                                <h1 className="display-4 text-center">Update Hotel</h1>
+                            </div>
+
+                            <div className="row my-4">
+                                <div className="col-md-12 col-12 my-auto">
+                                    <div className="col-md-12 col-12 float-right">
+                                        <form>
+                                            <div className="form-group">
+                                                <label htmlFor="name">Name</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={name}
+                                                    onChange={(e) => setname(e.target.value)}
+                                                    id="name"
+                                                    placeholder="Hotel name."
+                                                    required
+                                                />
+
+                                                <label htmlFor="price">Stan Price</label>
+                                                <input
+                                                    type="number"
+                                                    value={price1}
+                                                    onChange={(e) => setprice1(e.target.value)}
+                                                    className="form-control"
+                                                    required
+                                                    id="price"
+                                                    placeholder="Room price"
+                                                />
+
+                                                <label htmlFor="price">Exec Price</label>
+                                                <input
+                                                    type="number"
+                                                    value={price1}
+                                                    onChange={(e) => setprice2(e.target.value)}
+                                                    className="form-control"
+                                                    required
+                                                    id="price 2"
+                                                    placeholder="Room price"
+                                                />
+
+                                                <label htmlFor="price">Jun Price</label>
+                                                <input
+                                                    type="number"
+                                                    value={price3}
+                                                    onChange={(e) => setprice3(e.target.value)}
+                                                    className="form-control"
+                                                    required
+                                                    id="price 3"
+                                                    placeholder="Room price"
+                                                />
+
+                                                <label htmlFor="size">Location</label>
+                                                <input
+                                                    type="number"
+                                                    className="form-control"
+                                                    value={location}
+                                                    onChange={(e) => setlocation(e.target.value)}
+                                                    required
+                                                    id="size"
+                                                    placeholder="Location"
+                                                />
+                                                <label htmlFor="city">city</label>
+                                                <input
+                                                    type="text"
+                                                    value={city}
+                                                    onChange={(e) => setcity(e.target.value)}
+                                                    className="form-control"
+                                                    required
+                                                    id="city"
+                                                    placeholder="Capacitiy"
+                                                />
+
+
+
+                                                <label htmlFor="description">Description</label>
+                                                <input
+                                                    type="text"
+                                                    value={description}
+                                                    onChange={(e) => setdescription(e.target.value)}
+                                                    className="form-control"
+                                                    required
+                                                    id="description"
+                                                    placeholder="desc"
+                                                />
+
+                                                <label htmlFor="province">Province</label>
+                                                <input
+                                                    type="text"
+                                                    value={province}
+                                                    onChange={(e) => setprovince(e.target.value)}
+                                                    className="form-control"
+                                                    required
+                                                    id="province"
+                                                    placeholder="Province"
+                                                />
+
+
+
+                                                <label htmlFor="img1">Image 1</label>
+                                                <input
+                                                    type="text"
+                                                    value={image1}
+                                                    onChange={(e) => setImage1(e.target.value)}
+                                                    className="form-control"
+                                                    id="img1"
+                                                    placeholder="Image 1 URL"
+                                                    required
+                                                />
+                                                <label htmlFor="img2">Image 2</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={image2}
+                                                    onChange={(e) => setImage2(e.target.value)}
+                                                    id="img2"
+                                                    placeholder="Image 2 URL"
+                                                    required
+                                                />
+
+                                                <label htmlFor="img3">Image 3</label>
+                                                <input
+                                                    type="text"
+                                                    value={image3}
+                                                    onChange={(e) => setImage3(e.target.value)}
+                                                    className="form-control"
+                                                    id="img3"
+                                                    placeholder="Image 3 URL"
+                                                    required
+                                                />
+
+                                                {/* <label htmlFor="img4">Image 4</label>
+                                                <input
+                                                    type="text"
+                                                    value={image4}
+                                                    onChange={(e) => setImage4(e.target.value)}
+                                                    className="form-control"
+                                                    id="img4"
+                                                    placeholder="Image 4 URL"
+                                                    required
+                                                /> */}
+                                            </div>
+
+                                            <div className="form-group form-check"></div>
+                                        </form>
+                                        <button
+                                            className="btn btn-block btn-outline-primary"
+                                            onClick={updateRoomFirebase}
+                                        >
+                                            UPDATE ROOM
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+            ) : (
+                <>
+                    <div className="container roomerror">
+                        <div className="row my-5">
+                            <div className="col-md-6 col-12 mx-auto">
+                                <div className="card shadow-lg border-0 p-4 error">
+                                    <h1 className="text-center display-4">Update</h1>
+                                    <h3>Please select room from Room page..</h3>
+                                    <Link to="/rooms" className="btn btn-warning mt-4 ">
+                                        Back to Rooms
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
         </>
-      )}
-    </>
-  );
+    );
 };
 
 export default Edit;
