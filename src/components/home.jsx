@@ -39,7 +39,7 @@ return (
              <FontAwesomeIcon icon={faFolder} /><span class="ms-2">Bookings</span> </Link> </li>
            
            
-            <li> <Link to="/guests" class={`nav-link ${path==='/guests'?'active':'text-white'}`}> 
+            <li> <Link to="/about" class={`nav-link ${path==='/about'?'active':'text-white'}`}> 
             <FontAwesomeIcon icon={faUsers} />
             <span class="ms-2">Guests</span> </Link> </li>
             

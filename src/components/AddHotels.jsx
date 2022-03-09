@@ -14,6 +14,8 @@ const AddHotels = () => {
   const [location, setlocation] = useState("");
   const [description, setdescription] = useState("");
   const [city, setcity] = useState("");
+  const [hotelprice, sethotelprice] = useState("");
+
   const [province, setprovince] = useState("");
   const [price1, setprice1] = useState("");
   const [price2, setprice2] = useState("");
@@ -26,8 +28,9 @@ const AddHotels = () => {
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
-  const [image4, setImage4] = useState("");
- 
+  const [longitude, setlongitude] = useState("");
+  const [latitude, setlatitude] = useState("");
+
   const [beds2, setBeds2]  = useState(0);
 
   const [roomtype, setRoomtype] =useState("");
@@ -38,7 +41,10 @@ const [roomnumber, setRoomnumber] = useState("");
 const [roomprice, setRoomprice] = useState(0);
 const [roomnumber2, setRoomnumber2] = useState("");
 const [roomprice2, setRoomprice2] = useState(0);
-  const addHotelToFirebase = () => {
+ 
+
+
+const addHotelToFirebase = () => {
     if (
 
       name &&
@@ -47,7 +53,10 @@ const [roomprice2, setRoomprice2] = useState(0);
       city &&
       description &&
       province &&
+      hotelprice &&
       contactNumber &&
+      longitude &&
+      latitude &&
       // price1 &&
       // price2 &&
       // price3 &&
@@ -69,8 +78,11 @@ const [roomprice2, setRoomprice2] = useState(0);
         description,
         city,
         province,
+        hotelprice,
         contactNumber,
         email,
+        longitude,
+        latitude ,
         // price1,
         // price2,
         // price3,
@@ -101,6 +113,9 @@ const [roomprice2, setRoomprice2] = useState(0);
         setname("");
         setlocation("");
         setdescription("");
+        sethotelprice("");
+        setlongitude("");
+        setlatitude("");
         setcity("");
         // setprice1("");
         // setprice2("");
@@ -185,6 +200,48 @@ const [roomprice2, setRoomprice2] = useState(0);
                       required
                     />
                   </div>
+
+                  <div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="type">Longitude</label>
+<input
+  type="text"
+  className="form-control w-25"
+  value={longitude}
+  onChange={(e) => setlongitude(e.target.value)}
+  id="longitude"
+  placeholder="dfgfdgfd "
+  required
+/>
+</div>
+
+<div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="type">Latitude</label>
+<input
+  type="text"
+  className="form-control w-25"
+  value={latitude}
+  onChange={(e) => setlatitude(e.target.value)}
+  id="latitude"
+  placeholder="fddf "
+  required
+/>
+</div>
+
+                  <div class="mb-3 row justify-content-center align-items-center">
+
+<label class="col-sm-2 col-form-label" htmlFor="type">Price</label>
+<input
+  type="text"
+  className="form-control w-25"
+  value={hotelprice}
+  onChange={(e) => sethotelprice(e.target.value)}
+  id="Price Hotel"
+  placeholder="R1000 "
+  required
+/>
+</div>
 
                   <div class="mb-3 row justify-content-center align-items-center">
 
